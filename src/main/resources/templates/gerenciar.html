@@ -2,37 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <div th:replace="~{base::head}"></div>
+<div th:replace="~{base::navbar}"></div>
 <body class="container">
 
-	<div
-		th:replace="~{base::banner('Crud Spring', 'Gerenciamento de produtos')}"></div>
-	<div class="col">
 
-	<table class="table table-striped table-responsive table-bordered">
-		<thead class="thead-default">
+	<table class="table table-striped">
+		<thead>
 			<tr>
 				<th class="col-1">ID</th>
-				<th class="col-7">Nome</th>
-				<th class="col-1">Quantidade</th>
-				<th class="col-3">Gerenciar</th>
+				<th class="col-2">Nome</th>
+				<th class="col-3">Telefone</th>
+				<th class="col-3">E-mail</th>
+				<th class="col-3">Opções</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="produto : ${produtos}">
-				<td th:text="${produto.id}">ID</td>
-				<td th:text="${produto.nome}">Nome</td>
-				<td th:text="${produto.quantidade}">Quantidade</td>
+			<tr th:each="pessoa : ${pessoas}">
+				<td th:text="${ pessoa.id }">ID</td>
+				<td th:text="${ pessoa.nome }">Nome</td>
+				<td th:text="${ pessoa.telefone }">Telefone</td>
+				<td th:text="${ pessoa.eMail }">E-mail</td>
 				<td class="text-center">
-					<a th:href="@{/alterar/{id}(id=${produto.id})}" class="btn btn-warning">Alterar</a>
-					<a th:href="@{/excluir/{id}(id=${produto.id})}" class="btn btn-danger">Excluir</a>
+					<a th:href="@{/alterar/{id}(id=${pessoa.id})}" class="btn btn-warning">Alterar</a>
+					<a th:href="@{/excluir/{id}(id=${pessoa.id})}" class="btn btn-danger">Excluir</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-
-
-		<a href="/cadastrar" class="btn btn-primary mb-4">Cadastrar</a>
-
-	</div>
 </body>
 </html>
